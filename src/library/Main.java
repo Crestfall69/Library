@@ -5,6 +5,7 @@
  */
 package library;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -12,9 +13,12 @@ import java.util.Scanner;
  * @author Crestfall
  */
 public class Main {
-
+    
+    private static final ArrayList<Author> authorList = new ArrayList();
+    
     /**
-     * @param args the command line arguments
+     *
+     * @param args
      */
     public static void main(String[] args) {
         

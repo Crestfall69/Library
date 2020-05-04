@@ -11,30 +11,58 @@ package library;
  */
 public class Author {
 
+    /**
+     *
+     * @param name
+     */
     public void setAuthorName(String name) {
         authorName = name;
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setAuthorEmail(String email) {
         authorEmail = email;
     }
 
+    /**
+     *
+     * @param gender
+     */
     public void setAuthorGender(char gender) {
         authorGender = gender;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAuthorName() {
         return authorName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAuthorEmail() {
         return authorEmail;
     }
 
+    /**
+     *
+     * @return
+     */
     public char getAuthorGender() {
         return authorGender;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return authorName + authorEmail + authorGender;
@@ -44,6 +72,12 @@ public class Author {
     String authorEmail;
     char authorGender;
 
+    /**
+     *
+     * @param name
+     * @param email
+     * @param gender
+     */
     public Author(String name, String email, char gender) {
         authorName = name;
         authorEmail = email;
