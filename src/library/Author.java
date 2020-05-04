@@ -10,13 +10,40 @@ package library;
  * @author Crestfall
  */
 public class Author {
-    
-    
+
+    public void setAuthorName(String name) {
+        authorName = name;
+    }
+
+    public void setAuthorEmail(String email) {
+        authorEmail = email;
+    }
+
+    public void setAuthorGender(char gender) {
+        authorGender = gender;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public String getAuthorEmail() {
+        return authorEmail;
+    }
+
+    public char getAuthorGender() {
+        return authorGender;
+    }
+
+    @Override
+    public String toString() {
+        return authorName + authorEmail + authorGender;
+    }
     
     String authorName;
     String authorEmail;
     char authorGender;
-    
+
     public Author(String name, String email, char gender) {
         authorName = name;
         authorEmail = email;
