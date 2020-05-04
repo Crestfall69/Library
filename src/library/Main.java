@@ -5,6 +5,8 @@
  */
 package library;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Crestfall
@@ -15,7 +17,31 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        // CMD Bootleg 1.0 by Davey
+        // Initial Creation
+        Scanner scanner = new Scanner(System.in);
+        var command = "help";
+        // Commands
+        while (true) {
+            switch (command) {
+                default:
+                    System.out.println("Unknown command.");
+                    System.out.println("Refer to 'help' for list of commands.");
+                    break;
+                case "help":
+                    System.out.println("help: List of available commands.");
+                    System.out.println("credits: Show credits.");
+                    break;
+                case "credits":
+                    System.out.println("Basic Book Library");
+                    System.out.println("by: Davey");
+                    System.out.println("BID: 2301907252");
+                    break;
+            }
+            System.out.print("Command: ");
+            command = scanner.nextLine();
+        }
     }
-    
+
 }
