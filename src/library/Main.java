@@ -17,24 +17,28 @@ public class Main {
     private static final ArrayList<Author> authorList = new ArrayList();
 
     /**
+     * Returns a formatted string consisting of data of Author (i) from
+     * authorList.
      *
      * @param i
      */
     public static void selectAuthor(int i) {
-        System.out.format("%3d%40s\n", i, authorList.get(i).getAuthorName());
+        System.out.format("%3d%40s%40s%10c\n", i, authorList.get(i).getAuthorName(), authorList.get(i).getAuthorEmail(), authorList.get(i).getAuthorGender());
     }
 
     /**
-     *
+     * Lists all Authors in authorList. Uses selectAuthor to loop through
+     * authorList and print it in succession.
      */
     public static void listAuthor() {
-        System.out.format("%3s%40s\n", "id", "name");
+        System.out.format("%3s%40s%40s%10s\n", "id", "name", "email", "gender");
         for (int i = 0; i < authorList.size(); i++) {
             selectAuthor(i);
         }
     }
 
     /**
+     * Create a new Author and add it to authorList.
      *
      * @param name
      * @param email
@@ -58,7 +62,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         var command = "help";
         // Commands
-        program:while (true) {
+        program:
+        while (true) {
             switch (command) {
                 default:
                     System.out.println("Unknown command.");
@@ -102,8 +107,10 @@ public class Main {
                             break;
                         }
                         if (gender.equalsIgnoreCase("m") || gender.equalsIgnoreCase("f")) {
-                            addAuthor(name, email, gender.charAt(0));
+                            addAuthor(name, email, Character.toUpperCase(gender.charAt(0)));
                             break;
+                        } else {
+                            System.out.println("Please enter 'm' or 'f' only!");
                         }
                     }
                     break;
