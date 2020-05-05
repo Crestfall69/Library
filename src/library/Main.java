@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class Main {
 
     private static final ArrayList<Author> authorList = new ArrayList();
+    private static final ArrayList<Book> bookList = new ArrayList();
 
     /**
      * Returns a formatted string consisting of data of Author (i) from
@@ -56,7 +57,7 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-
+        
         // CMD Bootleg 1.0 by Davey
         // Initial Creation
         Scanner scanner = new Scanner(System.in);
@@ -73,8 +74,11 @@ public class Main {
                     System.out.println("help: List of available commands.");
                     System.out.println("credits: Show credits.");
                     System.out.println("exit: Exit the program.");
+                    System.out.println("debug: Run debug commands.");
                     System.out.println("auth_list: List all authors.");
                     System.out.println("auth_add: Add an author.");
+                    System.out.println("book_list: List all books.");
+                    System.out.println("book_add: Add a book.");
                     break;
                 case "credits":
                     System.out.println("Basic Book Library");
@@ -83,6 +87,10 @@ public class Main {
                     break;
                 case "exit":
                     break program;
+                case "debug":
+                    addAuthor("Davey", "davey_business17@yahoo.com", 'm');
+                    addAuthor("Kenrick", "kenrick_lim88@gmail.com", 'm');
+                    break;
                 case "auth_list":
                     listAuthor();
                     break;
@@ -113,6 +121,9 @@ public class Main {
                             System.out.println("Please enter 'm' or 'f' only!");
                         }
                     }
+                    break;
+                case "book_add":
+
                     break;
             }
             System.out.println("");
