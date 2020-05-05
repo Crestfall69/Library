@@ -74,7 +74,7 @@ public class Main {
                     System.out.println("help: List of available commands.");
                     System.out.println("credits: Show credits.");
                     System.out.println("exit: Exit the program.");
-                    System.out.println("debug: Run debug commands.");
+                    System.out.println("TestBook: Run debug commands.");
                     System.out.println("auth_list: List all authors.");
                     System.out.println("auth_add: Add an author.");
                     System.out.println("book_list: List all books.");
@@ -87,7 +87,7 @@ public class Main {
                     break;
                 case "exit":
                     break program;
-                case "debug":
+                case "TestBook":
                     addAuthor("Davey", "davey_business17@yahoo.com", 'm');
                     addAuthor("Kenrick", "kenrick_lim88@gmail.com", 'm');
                     break;
