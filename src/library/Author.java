@@ -65,9 +65,9 @@ public class Author {
      */
     @Override
     public String toString() {
-        return authorName + authorEmail + authorGender;
+        return "Author" + "[name=" + authorName + ", email=" + authorEmail + ", gender=" +authorGender + "]";
     }
-    
+
     String authorName;
     String authorEmail;
     char authorGender;
