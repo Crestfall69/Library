@@ -85,9 +85,9 @@ public class Book {
         String bookAuthorsNames = "";
         for (int i = 0; i < getBookAuthors().size(); i++) {
             if (i == 0) {
-                bookAuthorsNames = bookAuthorsNames + getBookAuthors().get(i);
+                bookAuthorsNames = bookAuthorsNames + bookAuthors.get(i).getAuthorName();
             } else {
-                bookAuthorsNames = bookAuthorsNames + ", " + getBookAuthors().get(i);
+                bookAuthorsNames = bookAuthorsNames + ", " + bookAuthors.get(i).getAuthorName();
             }
         }
         return bookAuthorsNames;

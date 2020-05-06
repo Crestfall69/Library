@@ -5,6 +5,7 @@
  */
 package library;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,6 +17,8 @@ public class Main {
 
     private static final ArrayList<Author> authorList = new ArrayList();
     private static final ArrayList<Book> bookList = new ArrayList();
+
+    private static final ArrayList<Author> authorsTemp = new ArrayList();
 
     /**
      * Returns a formatted string consisting of data of Author (i) from
@@ -52,12 +55,37 @@ public class Main {
         selectAuthor(authorList.size() - 1);
     }
 
+    public static void selectBook(int i) {
+        System.out.format("%3d%40s%40s%10.0f%5d\n", i, bookList.get(i).getBookName(), bookList.get(i).getBookAuthorsNames(), bookList.get(i).getBookPrice(), bookList.get(i).getBookQty());
+    }
+    
+    public static void listBook() {
+        System.out.format("%3s%40s%40s%10s%5s\n", "id", "name", "author", "price", "qty");
+        for (int i = 0; i < bookList.size(); i++) {
+            selectBook(i);
+        }
+    }
+    
+    public static void addBook(String name, ArrayList authors, int price) {
+        Book addbook = new Book(name, authors, price);
+        bookList.add(addbook);
+        System.out.println("Successfully added:");
+        selectBook(bookList.size() - 1);
+    }
+    
     /**
      *
      * @param args
      */
     public static void main(String[] args) {
-        
+
+        var name = "";
+        var email = "";
+        var gender = "";
+        var id = "";
+        int authorsIDtemp;
+        var price = "";
+
         // CMD Bootleg 1.0 by Davey
         // Initial Creation
         Scanner scanner = new Scanner(System.in);
@@ -65,6 +93,7 @@ public class Main {
         // Commands
         program:
         while (true) {
+            subprog:
             switch (command) {
                 default:
                     System.out.println("Unknown command.");
@@ -88,29 +117,38 @@ public class Main {
                 case "exit":
                     break program;
                 case "TestBook":
+                    authorsTemp.clear();
                     addAuthor("Davey", "davey_business17@yahoo.com", 'm');
                     addAuthor("Kenrick", "kenrick_lim88@gmail.com", 'm');
+                    
+                    authorsTemp.add(authorList.get(0));
+                    authorsTemp.add(authorList.get(1));
+                    
+                    addBook("How to write a book", authorsTemp , 15000);
                     break;
                 case "auth_list":
                     listAuthor();
                     break;
                 case "auth_add":
+                    System.out.println("");
                     System.out.println("Insert author name. Type 'cancel' to cancel.");
                     System.out.print("Name: ");
-                    var name = scanner.nextLine();
+                    name = scanner.nextLine();
                     if (name.equalsIgnoreCase("cancel")) {
                         break;
                     }
+                    System.out.println("");
                     System.out.println("Insert author email. Type 'cancel' to cancel.");
                     System.out.print("Email: ");
-                    var email = scanner.nextLine();
+                    email = scanner.nextLine();
                     if (email.equalsIgnoreCase("cancel")) {
                         break;
                     }
                     while (true) {
+                        System.out.println("");
                         System.out.println("Insert author gender (m/f). Type 'cancel' to cancel.");
                         System.out.print("Gender: ");
-                        var gender = scanner.nextLine();
+                        gender = scanner.nextLine();
                         if (gender.equalsIgnoreCase("cancel")) {
                             break;
                         }
@@ -122,14 +160,62 @@ public class Main {
                         }
                     }
                     break;
+                case "book_list":
+                    listBook();
+                    break;
                 case "book_add":
-
+                    System.out.println("Insert book name. Type 'cancel' to cancel.");
+                    System.out.print("Name: ");
+                    name = scanner.nextLine();
+                    if (name.equalsIgnoreCase("cancel")) {
+                        break;
+                    }
+                    listAuthor();
+                    while (true) {
+                        System.out.println("");
+                        System.out.println("Insert authors to add. Type 'cancel' to cancel. Type 'fin' to finish adding.");
+                        System.out.print("ID: ");
+                        id = scanner.nextLine();
+                        if (id.equalsIgnoreCase("cancel")) {
+                            break subprog;
+                        }
+                        if (id.equalsIgnoreCase("fin")) {
+                            break;
+                        }
+                        try {
+                            authorsIDtemp = Integer.parseInt(id);
+                            if (authorsIDtemp < 0 || authorsIDtemp >= authorList.size()) {
+                                System.out.println("Item doesn't exist!");
+                            }
+                            authorsTemp.add(authorList.get(authorsIDtemp));
+                        } catch (NumberFormatException e) {
+                            System.out.println(e);
+                        }
+                    }
+                    while (true) {
+                        System.out.println("");
+                        System.out.println("Insert book price. Type 'cancel' to cancel.");
+                        System.out.print("Price: ");
+                        price = scanner.nextLine();
+                        if (name.equalsIgnoreCase("cancel")) {
+                            break subprog;
+                        }
+                        try {
+                            Integer.parseInt(price);
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println(e);
+                            System.out.println("Not a number! Please enter a number.");
+                        }
+                    }
+                    addBook(name, authorsTemp, Integer.parseInt(price));
                     break;
             }
+            authorsTemp.clear();
+
             System.out.println("");
             System.out.print("Command: ");
             command = scanner.nextLine();
         }
     }
-
 }
