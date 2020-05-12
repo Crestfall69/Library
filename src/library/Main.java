@@ -5,7 +5,6 @@
  */
 package library;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -117,7 +116,6 @@ public class Main {
                 case "exit":
                     break program;
                 case "TestBook":
-                    authorsTemp.clear();
                     addAuthor("Davey", "davey_business17@yahoo.com", 'm');
                     addAuthor("Kenrick", "kenrick_lim88@gmail.com", 'm');
                     
